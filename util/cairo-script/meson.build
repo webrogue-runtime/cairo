@@ -47,6 +47,7 @@ pkgmod.generate(libcairoscript,
 
 meson.override_dependency('cairo-script-interpreter', libcairoscript_dep)
 
+if host_machine.system() != 'wasip1'
 csi_replay_exe = executable('csi-replay', csi_replay_sources,
   include_directories: [incbase],
   dependencies: deps + [libcairo_dep, libcairoscript_dep],
@@ -62,6 +63,7 @@ if feature_conf.get('CAIRO_HAS_SCRIPT_SURFACE', 0) == 1 and conf.get('HAVE_LIBGE
     include_directories: [incbase],
     dependencies: deps + [libcairo_dep, libcairoscript_dep],
   )
+endif
 endif
 
 install_headers(cairoscript_interpreter_headers, subdir: 'cairo')

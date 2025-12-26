@@ -187,6 +187,10 @@ extra_link_args += cc.get_supported_link_arguments([
   '-Wl,-Bsymbolic-functions',
 ])
 
+if host_machine.system() == 'wasip1'
+  internal_deps += cc.find_library('setjmp', required: true)
+endif
+
 if host_machine.endian() == 'big'
   conf.set('WORDS_BIGENDIAN', 1)
 endif

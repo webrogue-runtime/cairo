@@ -7,5 +7,5 @@
 /proxy-libintl
 /zlib-*
 /packagecache
-/pixman
+/pixman*
 /libpng*

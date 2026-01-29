@@ -1087,7 +1087,11 @@ _cairo_tmpfile (void)
     /* Fallback */
 #endif /* O_TMPFILE */
 
+#if __wasi__
+    abort();
+#else
     file = tmpfile();
+#endif
 
 #if defined(HAVE_FCNTL_H) && defined(FD_CLOEXEC)
     /* Manually set CLOEXEC */
